@@ -3,15 +3,21 @@ import displayMessage from "./components/common/displayMessage.js";
 import { getFromStorage, token } from "./components/storage.js";
 import renderDynamicNavigation from "./components/common/renderNavigation.js";
 import deleteProduct from "./components/products/deleteFunction.js";
+
+const userToken = getFromStorage(token);
+if (!userToken) {
+  location.href = "/";
+}
+
 renderDynamicNavigation();
 
 const query = document.location.search;
 const params = new URLSearchParams(query);
 const id = params.get("id");
 console.log(!id);
-// if (!id) {
-//   document.location.href = "/index.html";
-// }
+if (!id) {
+  document.location.href = "/index.html";
+}
 
 const URL = `${BASE_URL}/hotels/${id}`;
 
@@ -49,7 +55,6 @@ const updateProduct = async (name, description, id) => {
     categories: "",
   };
 
-  const userToken = getFromStorage(token);
   const options = {
     method: "PUT",
     headers: {

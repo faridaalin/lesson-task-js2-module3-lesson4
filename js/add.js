@@ -3,6 +3,10 @@ import BASE_URL from "./components/api.js";
 import displayMessage from "./components/common/displayMessage.js";
 import { getFromStorage, token } from "./components/storage.js";
 
+const userToken = getFromStorage(token);
+if (!userToken) {
+  location.href = "/";
+}
 renderDynamicNavigation();
 
 const productName = document.querySelector("#productName");
@@ -20,7 +24,6 @@ const addProduct = async (name, description) => {
     categories: "",
   };
 
-  const userToken = getFromStorage(token);
   const options = {
     method: "POST",
     headers: {

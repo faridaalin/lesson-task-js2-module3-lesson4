@@ -7,13 +7,12 @@ const renderDynamicNavigation = () => {
   let activeClass;
   const user = getFromStorage(userKey);
 
-  const loggedIn =
-    user.length === 0
-      ? `<li class="nav-item ${(activeClass =
-          pathname === "/login.html" ? "active" : "")} ml-auto">
+  const loggedIn = !user
+    ? `<li class="nav-item ${(activeClass =
+        pathname === "/login.html" ? "active" : "")} ml-auto">
     <a class="nav-link" href="./login.html">Login</a>
     </li>`
-      : `<li class="nav-item">
+    : `<li class="nav-item">
     <span class="nav-link" style="color: #E2CBAF">Hi ${user.username}!</span>
     </li>
     <li class="nav-item ${(activeClass =
