@@ -1,0 +1,62 @@
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import './variables';
+@import './typography';
+@import './base';
+@import './card';
+
+$theme-colors: ("primary": $color-parimary,
+    "dark": $color-parimary);
+
+$primary: $color-parimary;
+$input-bg: #FFFFFF;
+
+.bg-light {
+    background-color: #cc604e !important;
+}
+
+.btn-primary {
+    background-color: #dd8c7e;
+    border-color: #dd8c7e;
+}
+
+.btn-primary:hover {
+    background-color: #cc604e;
+    border-color: #cc604e;
+}
+
+.card {
+    box-shadow: 0 0 20px #6b696970;
+    transition: box-shadow 0.1s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 0 20px #585858c7;
+}
+
+.card-body {
+    background: #cc604e;
+    color: white;
+
+    .category {
+        margin-bottom: 0.4rem;
+        font-style: italic;
+        font-size: 0.8rem;
+        color: #332f2f;
+        text-transform: capitalize;
+
+    }
+
+    .card-title {
+        margin-bottom: 0.75rem;
+        color: #e0e0e0;
+        font-size: 1.4rem;
+    }
+}
+
+.hideForm {
+    display: none;
+}
+
+textarea.form-control {
+    height: 200px;
+}
