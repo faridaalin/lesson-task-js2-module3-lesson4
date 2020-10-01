@@ -2,24 +2,26 @@ import BASE_URL from "./components/api.js";
 import displayMessage from "./components/common/displayMessage.js";
 import { getFromStorage, token } from "./components/storage.js";
 import renderDynamicNavigation from "./components/common/renderNavigation.js";
+import deleteProduct from "./components/products/deleteFunction.js";
 renderDynamicNavigation();
 
 const query = document.location.search;
 const params = new URLSearchParams(query);
 const id = params.get("id");
-if (!id) {
-  document.location.href = "/index.html";
-}
+console.log(!id);
+// if (!id) {
+//   document.location.href = "/index.html";
+// }
 
 const URL = `${BASE_URL}/hotels/${id}`;
 
 const form = document.querySelector("#editForm");
-const formContainer = document.querySelector(".hideForm");
 const productName = document.querySelector("#productName");
 const description = document.querySelector("#description");
 const inputId = document.querySelector("#inputID");
 const loader = document.querySelector(".loader");
 const message = document.querySelector(".messageContainer");
+const formContainer = document.querySelector(".hideForm");
 
 (async () => {
   try {
@@ -28,9 +30,9 @@ const message = document.querySelector(".messageContainer");
     productName.value = data.name;
     description.value = data.description;
     inputId.value = data.id;
-    console.log(data);
+
+    deleteProduct(data.id);
   } catch (error) {
-    console.log(error);
   } finally {
     loader.style.display = "none";
     formContainer.style.display = "block";
@@ -60,7 +62,7 @@ const updateProduct = async (name, description, id) => {
   try {
     const response = await fetch(URL, options);
     const json = await response.json();
-    console.log(json);
+
     if (json.updated_at) {
       displayMessage(
         "alert-success",

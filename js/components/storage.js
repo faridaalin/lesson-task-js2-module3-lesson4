@@ -9,3 +9,6 @@ export const getFromStorage = (key) => {
 
   return !value ? [] : JSON.parse(value);
 };
+export const clearItemFromStorage = () => {
+  localStorage.clear();
+};

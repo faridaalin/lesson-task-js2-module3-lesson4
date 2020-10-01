@@ -7,9 +7,9 @@ const query = document.location.search;
 const params = new URLSearchParams(query);
 const id = params.get("id");
 
-if (!id) {
-  document.location.href = "/index.html";
-}
+// if (!id) {
+//   document.location.href = "/index.html";
+// }
 const URL = `${BASE_URL}/hotels/${id}`;
 
 (async function getHotels() {
